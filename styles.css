@@ -1,0 +1,323 @@
+/* ═══════════════════════════════════════════════
+   styles.css — Portfolio Site Styles
+   Edit colours/fonts in the :root block below
+═══════════════════════════════════════════════ */
+
+/* ── Reset ─────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+/* ── Design Tokens ─────────────────────────── */
+:root {
+  --bg:     #1a1612;        /* main background */
+  --bg-alt: #221e19;        /* alternate section background */
+  --cream:  #faefdd;        /* primary text colour */
+  --muted:  #a8957e;        /* secondary / subdued text */
+  --accent: #d4915a;        /* links, highlights */
+  --border: rgba(250,239,221,0.11);
+
+  --serif:  'Cormorant Garamond', Georgia, serif;
+  --sans:   'Jost', system-ui, sans-serif;
+
+  --max:    1080px;         /* max content width */
+  --pad:    clamp(1.5rem, 5vw, 3rem); /* horizontal page padding */
+}
+
+/* ── Base ───────────────────────────────────── */
+html { scroll-behavior: smooth; }
+
+body {
+  background:   var(--bg);
+  color:        var(--cream);
+  font-family:  var(--sans);
+  font-weight:  300;
+  font-size:    1rem;
+  line-height:  1.75;
+}
+
+a { color: inherit; text-decoration: none; }
+
+.container {
+  max-width: var(--max);
+  margin:    0 auto;
+  padding:   0 var(--pad);
+}
+
+/* ── Header / Nav ───────────────────────────── */
+header {
+  background:    var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+  position:      sticky;
+  top:           0;
+  z-index:       100;
+}
+
+header .container {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+  padding-top:     1.1rem;
+  padding-bottom:  1.1rem;
+}
+
+.site-name {
+  font-family:     var(--serif);
+  font-size:       1.4rem;
+  font-weight:     600;
+  letter-spacing:  0.01em;
+}
+
+nav ul { display: flex; gap: 2rem; list-style: none; }
+
+nav a {
+  font-size:       0.78rem;
+  font-weight:     500;
+  letter-spacing:  0.1em;
+  text-transform:  uppercase;
+  color:           var(--muted);
+  transition:      color 0.2s;
+}
+nav a:hover,
+nav a.current { color: var(--cream); }
+
+/* ── Hero ───────────────────────────────────── */
+.hero {
+  background:    var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+  padding:       clamp(3.5rem, 9vw, 7rem) 0 clamp(3rem, 6vw, 5.5rem);
+  position:      relative;
+  overflow:      hidden;
+}
+
+.hero .container {
+  display:               grid;
+  grid-template-columns: 1fr 1fr;
+  gap:                   4rem;
+  align-items:           center;
+  position:              relative;
+  z-index:               2;
+}
+
+.hero h1 {
+  font-family: var(--serif);
+  font-size:   clamp(2rem, 4.5vw, 4rem);
+  font-weight: 600;
+  line-height: 1.12;
+  font-style:  italic;
+}
+
+.hero-right p {
+  color:         var(--muted);
+  margin-bottom: 2rem;
+  max-width:     46ch;
+}
+.hero-right p strong { color: var(--cream); font-weight: 400; }
+
+/* Decorative orbit rings in hero */
+.orbit {
+  position:      absolute;
+  border-radius: 50%;
+  border:        1px solid rgba(212,145,90,0.07);
+  pointer-events: none;
+}
+.orbit-1 { width: 540px; height: 540px; top: -220px; right: -110px; }
+.orbit-2 { width: 330px; height: 330px; top:  -80px; right:   55px; }
+
+/* ── Shared link style ──────────────────────── */
+.featured-link {
+  display:        inline-block;
+  color:          var(--accent);
+  font-size:      0.875rem;
+  font-weight:    500;
+  letter-spacing: 0.04em;
+  border-bottom:  1px solid rgba(212,145,90,0.35);
+  padding-bottom: 2px;
+  transition:     color 0.2s, border-color 0.2s;
+}
+.featured-link:hover {
+  color:        var(--cream);
+  border-color: rgba(250,239,221,0.4);
+}
+
+/* ── Sections ───────────────────────────────── */
+section {
+  padding:       clamp(3rem, 6vw, 5rem) 0;
+  border-bottom: 1px solid var(--border);
+}
+section.alt { background: var(--bg-alt); }
+
+h2 {
+  font-family:  var(--serif);
+  font-size:    clamp(1.6rem, 3vw, 2.5rem);
+  font-weight:  600;
+  font-style:   italic;
+  margin-bottom: 2.5rem;
+}
+
+.section-note {
+  color:         var(--muted);
+  max-width:     60ch;
+  margin-bottom: 2rem;
+}
+.section-note strong { color: var(--cream); font-weight: 400; }
+
+/* ── Portfolio Grid ─────────────────────────── */
+.portfolio-grid {
+  display:               grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:                   1rem;
+  margin-bottom:         2.5rem;
+}
+
+.portfolio-item {
+  display:      block;
+  aspect-ratio: 4 / 2.8;
+  overflow:     hidden;
+  background:   #111;
+}
+
+.portfolio-item img {
+  width:      100%;
+  height:     100%;
+  object-fit: cover;
+  display:    block;
+  opacity:    0.82;
+  transition: transform 0.5s ease, opacity 0.3s;
+}
+.portfolio-item:hover img { transform: scale(1.05); opacity: 1; }
+
+/* ── About ──────────────────────────────────── */
+.about-grid {
+  display:               grid;
+  grid-template-columns: 1fr 1.6fr;
+  gap:                   4rem;
+  align-items:           start;
+}
+
+.about-grid h1 {
+  font-family:  var(--serif);
+  font-size:    clamp(1.8rem, 3vw, 2.8rem);
+  font-weight:  600;
+  font-style:   italic;
+  line-height:  1.2;
+}
+
+/* ── Interviews / Articles ──────────────────── */
+.interview-list { list-style: none; }
+
+.interview-list li { border-bottom: 1px solid var(--border); }
+.interview-list li:first-child { border-top: 1px solid var(--border); }
+
+.interview-list a {
+  display:               grid;
+  grid-template-columns: 190px 1fr;
+  gap:                   2rem;
+  padding:               1.2rem 0;
+  align-items:           baseline;
+}
+.interview-list a:hover .ititle { color: var(--accent); }
+
+.isource {
+  font-size:      0.72rem;
+  letter-spacing: 0.09em;
+  text-transform: uppercase;
+  color:          var(--muted);
+}
+
+.ititle {
+  font-family:  var(--serif);
+  font-size:    1.1rem;
+  font-weight:  400;
+  line-height:  1.4;
+  transition:   color 0.2s;
+}
+
+/* ── Contact ────────────────────────────────── */
+.contact-block h1 {
+  font-family:   var(--serif);
+  font-size:     clamp(1.8rem, 3.5vw, 3rem);
+  font-weight:   600;
+  font-style:    italic;
+  margin-bottom: 1.25rem;
+}
+
+/* ── Stay in Touch ──────────────────────────── */
+.stay-grid {
+  display:               grid;
+  grid-template-columns: 1fr 1fr;
+  gap:                   4rem;
+  align-items:           start;
+}
+
+h4 {
+  font-size:      0.72rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color:          var(--muted);
+  font-weight:    500;
+  margin-bottom:  1.2rem;
+}
+
+.social-list { list-style: none; }
+.social-list li { margin-bottom: 0.45rem; }
+.social-list a { color: var(--muted); font-size: 0.9rem; transition: color 0.2s; }
+.social-list a:hover { color: var(--cream); }
+
+.newsletter-row { display: flex; margin-top: 0.5rem; }
+
+.newsletter-row input[type="email"] {
+  flex:        1;
+  background:  rgba(250,239,221,0.05);
+  border:      1px solid var(--border);
+  border-right: none;
+  color:       var(--cream);
+  font-family: var(--sans);
+  font-size:   0.875rem;
+  padding:     0.65rem 1rem;
+  outline:     none;
+}
+.newsletter-row input::placeholder { color: var(--muted); }
+
+.newsletter-row button {
+  background:     var(--accent);
+  border:         1px solid var(--accent);
+  color:          var(--bg);
+  font-family:    var(--sans);
+  font-size:      0.78rem;
+  font-weight:    500;
+  letter-spacing: 0.07em;
+  text-transform: uppercase;
+  padding:        0.65rem 1.2rem;
+  cursor:         pointer;
+  transition:     background 0.2s;
+}
+.newsletter-row button:hover { background: var(--cream); border-color: var(--cream); }
+
+/* ── Footer ─────────────────────────────────── */
+footer { background: var(--bg-alt); padding: 1.5rem 0; }
+footer .container {
+  display:         flex;
+  align-items:     center;
+  justify-content: space-between;
+}
+
+/* ── Scroll Reveal Animation ────────────────── */
+.reveal {
+  opacity:    0;
+  transform:  translateY(20px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+}
+.reveal.visible { opacity: 1; transform: none; }
+
+/* ── Responsive ─────────────────────────────── */
+@media (max-width: 800px) {
+  .hero .container,
+  .about-grid             { grid-template-columns: 1fr; gap: 2rem; }
+  .portfolio-grid         { grid-template-columns: repeat(2, 1fr); }
+  .stay-grid              { grid-template-columns: 1fr; gap: 2.5rem; }
+  .interview-list a       { grid-template-columns: 1fr; gap: 0.15rem; }
+  nav ul                  { gap: 1.2rem; }
+}
+
+@media (max-width: 520px) {
+  .portfolio-grid { grid-template-columns: 1fr; }
+}
