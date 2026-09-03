@@ -1,6 +1,6 @@
 
 # Crown of Crisis
-
+![Crown of Crisis](screenshots/title.png)
 **Crown of Crisis** is a multilingual browser-based historical serious game about political decision-making under Emperor Joseph II in the Habsburg Monarchy between 1784 and 1790.
 
 The game explores how political authority, implementation capacity, fiscal pressure, provincial resistance, military demands, and social burden interact over time.
@@ -60,7 +60,7 @@ The recurring political actors represent competing constraints on imperial rule:
 - **Chancellor** — administration, implementation capacity, fiscal limits, and the social cost of reform
 
 Their disagreements are designed as political trade-offs rather than as a simple good-versus-bad system.
-
+![Political Perspecitves](screenshots/role.png)
 ## Endings
 
 The final outcome is determined by the accumulated political and administrative state of the monarchy rather than by a single final choice.
